@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+
+<TabPane fx:id="tabPanePrincipal" xmlns:fx="http://javafx.com/fxml"
+         fx:controller="co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller.AdministradorViewController">
+
+    <tabs>
+        <Tab text="Gestión de entrenadores">
+            <fx:include source="AdministradorGestionEntrenadores.fxml" />
+        </Tab>
+
+
+        <Tab text="Generación de reportes">
+            <fx:include source="AdministradorGeneradordeRegistroAvanzado.fxml" />
+        </Tab>
+    </tabs>
+
+</TabPane>

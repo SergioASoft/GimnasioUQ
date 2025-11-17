@@ -1,0 +1,59 @@
+package co.edu.uniquindio.gimnasiouq.gimnasiouq.model;
+
+import java.time.LocalDate;
+
+public class Clase {
+    private String nombre;
+    private LocalDate horarioInicio;
+    private LocalDate horarioFin;
+    private int cupoMaximo;
+    private TipoClase tipoClase;
+
+    public Clase(String nombre, LocalDate horarioInicio, LocalDate horarioFin, int cupoMaximo, TipoClase tipoClase) {
+        this.nombre = nombre;
+        this.horarioInicio = horarioInicio;
+        this.horarioFin = horarioFin;
+        this.cupoMaximo = cupoMaximo;
+        this.tipoClase = tipoClase;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public LocalDate getHorarioInicio() {
+        return horarioInicio;
+    }
+
+    public void setHorarioInicio(LocalDate horarioInicio) {
+        this.horarioInicio = horarioInicio;
+    }
+
+    public LocalDate getHorarioFin() {
+        return horarioFin;
+    }
+
+    public void setHorarioFin(LocalDate horarioFin) {
+        this.horarioFin = horarioFin;
+    }
+
+    public int getCupoMaximo() {
+        return cupoMaximo;
+    }
+
+    public void setCupoMaximo(int cupoMaximo) {
+        this.cupoMaximo = cupoMaximo;
+    }
+
+    public TipoClase getTipoClase() {
+        return tipoClase;
+    }
+
+    public void setTipoClase(TipoClase tipoClase) {
+        this.tipoClase = tipoClase;
+    }
+}

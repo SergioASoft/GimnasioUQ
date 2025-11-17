@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="520.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller.RecepcionistaReservadeClasesViewController">
+   <children>
+      <Label fx:id="txtReservaClases" layoutX="41.0" prefHeight="46.0" prefWidth="138.0" text="Reserva de clases">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtReservaClases1" layoutX="124.0" layoutY="53.0" prefHeight="46.0" prefWidth="138.0" text="Ingresar Id:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmbClase" layoutX="215.0" layoutY="126.0" prefWidth="150.0" promptText="Seleccione" />
+      <Label fx:id="txtReservaClases11" layoutX="124.0" layoutY="115.0" prefHeight="46.0" prefWidth="138.0" text="Elija la clase:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnRegistrarAsistencia" layoutX="434.0" layoutY="99.0" mnemonicParsing="false" onAction="#OnActionRegistrarAsistencia" text="Registrar Asistencia" />
+      <Separator layoutX="10.0" layoutY="196.0" prefHeight="0.0" prefWidth="729.0" />
+      <TextField layoutX="216.0" layoutY="64.0" />
+      <TextArea layoutX="24.0" layoutY="212.0" prefHeight="282.0" prefWidth="683.0" />
+   </children>
+</AnchorPane>

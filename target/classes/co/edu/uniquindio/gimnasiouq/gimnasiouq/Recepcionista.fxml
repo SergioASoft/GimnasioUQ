@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<TabPane fx:id="tabPanePrincipal" xmlns:fx="http://javafx.com/fxml"
+         fx:controller="co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller.RecepcionistaViewController">
+
+    <tabs>
+        <Tab text="Registro de Usuarios">
+            <fx:include source="RecepcionistaRegistroUsuarios.fxml" />
+        </Tab>
+
+        <Tab text="Asignación de Membresías">
+            <fx:include source="RecepcionistaAsignacionMembresias.fxml" />
+        </Tab>
+
+        <Tab text="Reportes">
+            <fx:include source="RecepcionistaReportes.fxml" />
+        </Tab>
+
+        <Tab text="Reserva de clases">
+            <fx:include source="RecepcionistaReservadeClases.fxml" />
+        </Tab>
+    </tabs>
+</TabPane>

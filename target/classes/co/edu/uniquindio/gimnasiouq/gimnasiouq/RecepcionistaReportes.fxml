@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="541.0" prefWidth="828.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller.RecepcionistaReportesViewController">
+
+            <children>
+                <Label fx:id="txtTipoReporte" layoutX="93.0" layoutY="74.0" prefHeight="44.0" prefWidth="230.0" text="Tipo de reporte a generar: ">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Label>
+                <TextArea layoutX="9.0" layoutY="227.0" prefHeight="304.0" prefWidth="813.0" />
+                <Button fx:id="btnGenerar" layoutX="354.0" layoutY="170.0" mnemonicParsing="false" text="Generar" />
+                <ComboBox fx:id="cmbTipoReporte" layoutX="327.0" layoutY="83.0" prefWidth="150.0" promptText="Seleccionar" />
+                <Label layoutX="37.0" layoutY="3.0" text="Generación Reportes">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Separator layoutX="-15.0" layoutY="212.0" prefHeight="2.0" prefWidth="841.0" />
+            </children>
+        </AnchorPane>

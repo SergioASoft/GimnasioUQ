@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="381.0" prefWidth="718.0" style="-fx-background-color: #FFFFFF; -fx-border-color: 000000;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller.AdministradorLoginViewController">
+   <children>
+      <Label fx:id="lblBienvenida" layoutX="238.0" layoutY="14.0" prefHeight="58.0" prefWidth="282.0" text="Bienvenido al gimnasioUQ">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font>
+      </Label>
+      <Separator layoutY="197.0" prefHeight="0.0" prefWidth="742.0" />
+      <Label layoutX="108.0" layoutY="152.0" prefHeight="31.0" prefWidth="35.0" text="Id:">
+         <font>
+            <Font name="System Italic" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="232.0" prefHeight="31.0" prefWidth="118.0" text="Contraseña:">
+         <font>
+            <Font name="System Italic" size="21.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="txtContrasenia" layoutX="162.0" layoutY="232.0" prefHeight="31.0" prefWidth="418.0" promptText="Ingresar contraseña" />
+      <TextField fx:id="txtUsuario" layoutX="162.0" layoutY="152.0" prefHeight="31.0" prefWidth="418.0" promptText="Ingresar usuario" />
+      <Button fx:id="btnIngresar" layoutX="341.0" layoutY="332.0" mnemonicParsing="false" onAction="#OnActionOnLogin" text="Ingresar" />
+      <ComboBox fx:id="cmbRol" blendMode="HARD_LIGHT" layoutX="162.0" layoutY="85.0" prefHeight="26.0" prefWidth="418.0" promptText="Seleccionar">
+         <effect>
+            <Lighting bumpInput="$null">
+               <light>
+                   <javafx.scene.effect.Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ComboBox>
+      <Label fx:id="txtUsuario1" layoutX="103.0" layoutY="82.0" prefHeight="31.0" prefWidth="45.0" text="Rol:">
+         <font>
+            <Font name="System Italic" size="21.0" />
+         </font>
+      </Label>
+   </children>
+   <effect>
+      <InnerShadow />
+   </effect>
+</AnchorPane>
