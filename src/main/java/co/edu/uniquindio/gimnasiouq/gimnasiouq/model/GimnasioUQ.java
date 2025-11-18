@@ -3,6 +3,7 @@
 package co.edu.uniquindio.gimnasiouq.gimnasiouq.model;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -193,13 +194,36 @@ public class GimnasioUQ {
         return listaClases;
     }
 
-    // Método para reservar clase y actualizar popularidad
     public boolean reservarClase(Usuario usuario, Clase clase) {
         if (usuario == null || clase == null) return false;
         ReservaClase reserva = new ReservaClase("R" + (listaReservasClases.size()+1), usuario.getNombre(), clase.getNombre());
         listaReservasClases.add(reserva);
         clase.incrementarReserva();
         return true;
+    }
+    public ArrayList<Usuario> getUsuariosActivos() {
+        ArrayList<Usuario> activos = new ArrayList<>();
+        for (Usuario u : listaUsuarios) {
+            if (u.isActivo()) activos.add(u);
+        }
+        return activos;
+    }
+
+    public ArrayList<Clase> getClasesMasReservadas() {
+        return listaClases;
+    }
+
+    // Membresías próximas a vencer (ejemplo: menos de 10 días)
+    public ArrayList<Membresia> getMembresiasPorVencer(int diasALimite) {
+        ArrayList<Membresia> porVencer = new ArrayList<>();
+        LocalDate hoy = LocalDate.now();
+        for (Membresia m : listaMembresias) {
+            if (m.getFechaFin() != null && !m.getFechaFin().isBefore(hoy)) {
+                long dias = ChronoUnit.DAYS.between(hoy, m.getFechaFin());
+                if (dias <= diasALimite) porVencer.add(m);
+            }
+        }
+        return porVencer;
     }
 }
 

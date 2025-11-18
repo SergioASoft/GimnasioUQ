@@ -8,6 +8,7 @@ public abstract class Membresia implements IMembresia{
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private boolean estado;
+    private Usuario usuario;
 
     public TipoMembresia getTipoMembresia() {
         return tipoMembresia;
@@ -35,6 +36,8 @@ public abstract class Membresia implements IMembresia{
     }
     public boolean getEstado() {return estado;}
     public void setEstado(boolean estado) {this.estado = estado;}
+    public Usuario getUsuario() {return usuario;}
+    public void setUsuario(Usuario usuario) {this.usuario = usuario;}
 
     public Membresia(TipoMembresia tipoMembresia, double costo, LocalDate fechaInicio, LocalDate fechaFin, boolean estado) {
         this.tipoMembresia = tipoMembresia;
@@ -45,5 +48,8 @@ public abstract class Membresia implements IMembresia{
     }
 
     public Membresia() {
+    }
+    public String getUsuarioName() {
+        return usuario != null ? usuario.getNombre() : "Desconocido";
     }
 }

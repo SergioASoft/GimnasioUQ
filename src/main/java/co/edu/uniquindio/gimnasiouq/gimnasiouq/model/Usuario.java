@@ -1,5 +1,6 @@
 package co.edu.uniquindio.gimnasiouq.gimnasiouq.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public abstract class Usuario {
@@ -11,6 +12,7 @@ public abstract class Usuario {
     private String correo;
     private Membresia membresia;
     private ArrayList<ReservaClase> reservasClases;
+    private boolean activo;
 
     public String getNombre() {
         return nombre;
@@ -51,5 +53,14 @@ public abstract class Usuario {
         this.edad = edad;
         this.telefono = telefono;
         this.correo = correo;
+    }
+    public boolean isActivo() {
+        return tieneMembresiaVigente();
+    }
+
+    public boolean tieneMembresiaVigente() {
+        if (membresia == null) return false;
+        LocalDate hoy = LocalDate.now();
+        return membresia.getFechaFin() != null && membresia.getFechaFin().isAfter(hoy);
     }
 }

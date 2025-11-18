@@ -1,5 +1,7 @@
 package co.edu.uniquindio.gimnasiouq.gimnasiouq.controller;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.factory.*;
+import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Clase;
+import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Membresia;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Usuario;
 
 import java.util.ArrayList;
@@ -24,5 +26,14 @@ public class RecepcionistaController {
 
     public boolean actualizarUsuario(Usuario usuarioSeleccionado, String nombre, String apellido, String identificacion, int edad, String telefono, String correo) {
         return modelFactory.actualizarUsuario(usuarioSeleccionado, nombre, apellido, identificacion, edad, telefono, correo);
+    }
+    public ArrayList<Usuario> getUsuariosActivos() {
+        return ModelFactory.getInstance().getUsuariosActivos();
+    }
+    public ArrayList<Clase> getClasesMasReservadas() {
+        return ModelFactory.getInstance().getClasesMasReservadas();
+    }
+    public ArrayList<Membresia> getMembresiasPorVencer(int diasALimite) {
+        return ModelFactory.getInstance().getMembresiasPorVencer(diasALimite);
     }
 }

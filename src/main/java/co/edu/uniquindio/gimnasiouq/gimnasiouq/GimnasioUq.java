@@ -11,7 +11,7 @@ import java.io.IOException;
 public class GimnasioUq extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(GimnasioUq.class.getResource("AdministradorGeneradordeRegistroAvanzado.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(GimnasioUq.class.getResource("RecepcionistaReportes.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("GimnasioUq");
         stage.setScene(scene);

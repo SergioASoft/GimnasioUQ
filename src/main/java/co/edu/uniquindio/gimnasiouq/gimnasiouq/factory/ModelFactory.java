@@ -82,5 +82,14 @@ public class ModelFactory {
     public ArrayList<Clase> getClasesMasPopulares() {
         return gimnasioUQ.getClasesMasPopulares();
     }
+    public ArrayList<Usuario> getUsuariosActivos() {
+        return gimnasioUQ.getUsuariosActivos();
+    }
+    public ArrayList<Clase> getClasesMasReservadas() {
+        return gimnasioUQ.getClasesMasReservadas();
+    }
+    public ArrayList<Membresia> getMembresiasPorVencer(int diasALimite) {
+        return gimnasioUQ.getMembresiasPorVencer(diasALimite);
+    }
 }
 
