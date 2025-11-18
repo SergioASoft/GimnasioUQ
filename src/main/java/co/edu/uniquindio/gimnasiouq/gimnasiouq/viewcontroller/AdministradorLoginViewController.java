@@ -60,19 +60,23 @@ public class AdministradorLoginViewController {
 
 
     @FXML
-    void OnActionOnLogin(ActionEvent event) throws IOException {
-
+    void OnActionOnLogin(ActionEvent event) {
         String usuario = txtUsuario.getText();
         String contrasenia = txtContrasenia.getText();
         String rol = cmbRol.getValue();
 
-        boolean acceso = AdministradorLoginController.autenticar(usuario, contrasenia, rol);
+        boolean acceso = ModelFactory.getInstance().autenticar(usuario, contrasenia, rol);
 
-        if(acceso){
-            lblMensaje.setText("Acceso permitido");
-            cambiarVentanaSegunRol(rol);
-        }else{
-            lblMensaje.setText("usuario o contraseña incorrecta");
+        if (acceso) {
+            mostrarMensaje("Login exitoso", null, "Acceso permitido. Bienvenido, " + rol + ".", Alert.AlertType.INFORMATION);
+            try {
+                cambiarVentanaSegunRol(rol);
+            } catch (Exception e) {
+                mostrarMensaje("Error", "No se pudo cargar la ventana", e.getMessage(), Alert.AlertType.ERROR);
+                e.printStackTrace();
+            }
+        } else {
+            mostrarMensaje("Login fallido", null, "Usuario o contraseña incorrecta", Alert.AlertType.ERROR);
         }
     }
 
@@ -97,13 +101,13 @@ public class AdministradorLoginViewController {
         stage.setScene(scene);
         stage.show();
     }
+
     private void mostrarMensaje(String titulo, String header, String contenido, Alert.AlertType alertType) {
         Alert aler = new Alert(alertType);
         aler.setTitle(titulo);
         aler.setHeaderText(header);
         aler.setContentText(contenido);
         aler.showAndWait();
-
     }
 
 }
