@@ -54,5 +54,6 @@
             <TableColumn fx:id="tcEstado" prefWidth="181.5999755859375" text="Estado" />
         </columns>
       </TableView>
+      <Button fx:id="btnCambiarEstado" layoutX="703.0" layoutY="211.0" mnemonicParsing="false" onAction="#OnActionCambiarEstado" text="Activar / Desactivar" />
             </children>
         </AnchorPane>

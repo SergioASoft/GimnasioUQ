@@ -1,101 +1,156 @@
 package co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
+import co.edu.uniquindio.gimnasiouq.gimnasiouq.controller.RecepcionistaController;
+import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Membresia;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.TipoMembresia;
+import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Usuario;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.*;
-import co.edu.uniquindio.gimnasiouq.gimnasiouq.controller.RecepcionistaController;
+
+import java.time.LocalDate;
+
 public class RecepcionistaAsignacionMembresiasViewController {
-    RecepcionistaController recepcionistaController;
-    @FXML
-    private Label Lupa;
+
+    private RecepcionistaController recepcionistaController;
+    private ObservableList<Usuario> listaUsuarios = FXCollections.observableArrayList();
+    private Usuario usuarioSeleccionado;
+
+    @FXML private TextField txtId;
+    @FXML private ComboBox<String> cmbTipoMembresia;
+    @FXML private ComboBox<TipoMembresia> cmbDuracion;
+
+    @FXML private TableView<Usuario> tableMembresia;
+    @FXML private TableColumn<Usuario, String> tcId;
+    @FXML private TableColumn<Usuario, String> tcNombre;
+    @FXML private TableColumn<Usuario, String> tcMembresia;
+    @FXML private TableColumn<Usuario, String> tcDuracion;
+    @FXML private TableColumn<Usuario, String> tcFechaInicio;
+    @FXML private TableColumn<Usuario, String> tcFechaFinal;
+    @FXML private TableColumn<Usuario, String> tcEstado;
+
+    @FXML private Button btnBuscar;
+    @FXML private Button btnAsignarMembresia;
+    @FXML private Button btnCambiarEstado;
 
     @FXML
-    private Button btnAsignarMembresia;
+    void initialize() {
+        recepcionistaController = new RecepcionistaController();
 
-    @FXML
-    private Button btnBuscar;
+        // combos
+        cmbTipoMembresia.getItems().addAll("Basica", "Premium", "Vip");
+        cmbDuracion.setItems(FXCollections.observableArrayList(TipoMembresia.values()));
+        cmbDuracion.setValue(TipoMembresia.MENSUAL);
 
-    @FXML
-    private ComboBox<?> cmbDuracion;
+        initDataBinding();
+        cargarUsuarios();
+        listenerSelection();
+    }
 
-    @FXML
-    private ComboBox<?> cmbTipoMembresia;
+    private void initDataBinding() {
+        tcId.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getIdentificacion()));
+        tcNombre.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getNombre() + " " + c.getValue().getApellido()));
 
-    @FXML
-    private TableView<?> tableMembresia;
+        tcMembresia.setCellValueFactory(c -> new SimpleStringProperty(
+                c.getValue().getMembresia() != null ? c.getValue().getMembresia().getClass().getSimpleName() : "Sin membresía"
+        ));
 
-    @FXML
-    private TableColumn<?, ?> tcDuracion;
+        tcDuracion.setCellValueFactory(c -> new SimpleStringProperty(
+                c.getValue().getMembresia() != null ? c.getValue().getMembresia().getTipoMembresia().getDescripcion() : "-"
+        ));
 
-    @FXML
-    private TableColumn<?, ?> tcEstado;
+        tcFechaInicio.setCellValueFactory(c -> new SimpleStringProperty(
+                c.getValue().getMembresia() != null && c.getValue().getMembresia().getFechaInicio() != null ?
+                        c.getValue().getMembresia().getFechaInicio().toString() : "-"
+        ));
 
-    @FXML
-    private TableColumn<?, ?> tcFechaFinal;
+        tcFechaFinal.setCellValueFactory(c -> new SimpleStringProperty(
+                c.getValue().getMembresia() != null && c.getValue().getMembresia().getFechaFin() != null ?
+                        c.getValue().getMembresia().getFechaFin().toString() : "-"
+        ));
 
-    @FXML
-    private TableColumn<?, ?> tcFechaInicio;
+        tcEstado.setCellValueFactory(c -> new SimpleStringProperty(
+                c.getValue().getMembresia() != null ? (c.getValue().getMembresia().getEstado() ? "Activa" : "Inactiva") : "-"
+        ));
+    }
 
-    @FXML
-    private TableColumn<?, ?> tcId;
+    private void cargarUsuarios() {
+        listaUsuarios.setAll(recepcionistaController.obtenerUsuarios());
+        tableMembresia.setItems(listaUsuarios);
+    }
 
-    @FXML
-    private TableColumn<?, ?> tcMembresia;
-
-    @FXML
-    private TableColumn<?, ?> tcNombre;
-
-    @FXML
-    private Label txtAsignacionMembresia;
-
-    @FXML
-    private Label txtDuracion;
-
-    @FXML
-    private TextField txtId;
-
-    @FXML
-    private Label txtIdM;
-
-    @FXML
-    private Label txtTipoMembresia;
-
-    @FXML
-    void OnActionAsignarMembresia(ActionEvent event) {
-
+    private void listenerSelection() {
+        tableMembresia.getSelectionModel().selectedItemProperty().addListener((obs, oldV, newV) -> {
+            usuarioSeleccionado = newV;
+        });
     }
 
     @FXML
     void OnActionBuscar(ActionEvent event) {
-       // buscarUsuario();
-    }
+        String id = txtId.getText().trim();
+        if (id.isEmpty()) {
+            mostrarAlerta("Debe ingresar identificación a buscar");
+            return;
+        }
 
-   // private void buscarUsuario() {
-    //    String identificacion = txtId.getText();
-      //  Usuario usuario = recepcionistaController.buscarUsuarioPorIdentificacion(identificacion);
-       // if (usuario != null) {
-       //     lblUsuarioEncontrado.setText(usuario.getNombre());
-     //   } else {
-       //     lblUsuarioEncontrado.setText("Usuario no encontrado");
-      //  }
-    //}
+        usuarioSeleccionado = recepcionistaController.obtenerUsuarios().stream()
+                .filter(u -> id.equals(u.getIdentificacion()))
+                .findFirst()
+                .orElse(null);
+
+        if (usuarioSeleccionado == null) {
+            mostrarAlerta("No existe usuario con ese ID");
+            return;
+        }
+        tableMembresia.getSelectionModel().select(usuarioSeleccionado);
+    }
 
     @FXML
-    void initialize() {
-     //   cmbTipoMembresia.getItems().addAll("Basica", "Premium", "VIP");
-      //  cmbTipoMembresia.setValue("Seleccionar");
-       // cmbDuracion.getItems().addAll(TipoMembresia.MENSUAL, TipoMembresia.TRIMESTRAL, TipoMembresia.ANUAL);
-       // cmbDuracion.setValue(TipoMembresia.MENSUAL);
-       //RecepcionistaController recepcionistaController = new RecepcionistaController();
+    void OnActionAsignarMembresia(ActionEvent event) {
+        if (usuarioSeleccionado == null) {
+            mostrarAlerta("Seleccione un usuario");
+            return;
+        }
 
+        String tipo = cmbTipoMembresia.getValue();
+        TipoMembresia duracion = cmbDuracion.getValue();
+
+        if (tipo == null || duracion == null) {
+            mostrarAlerta("Seleccione tipo y duración");
+            return;
+        }
+
+        Membresia creada = recepcionistaController.crearMembresiaParaUsuario(usuarioSeleccionado.getIdentificacion(), tipo, duracion);
+        if (creada == null) {
+            mostrarAlerta("No se pudo asignar la membresía");
+            return;
+        }
+
+        cargarUsuarios();
+        mostrarAlerta("Membresía asignada correctamente");
     }
 
-   // String identificacionUsuario = txtId.getText();
+    @FXML
+    void OnActionCambiarEstado(ActionEvent event) {
+        if (usuarioSeleccionado == null) {
+            mostrarAlerta("Seleccione un usuario");
+            return;
+        }
+        boolean ok = recepcionistaController.cambiarEstadoMembresiaPorUsuarioId(usuarioSeleccionado.getIdentificacion());
+        if (!ok) mostrarAlerta("No se pudo cambiar estado (membresía inexistente)");
+        else {
+            cargarUsuarios();
+            mostrarAlerta("Estado cambiado");
+        }
+    }
 
-
+    private void mostrarAlerta(String msg) {
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setHeaderText(null);
+        a.setContentText(msg);
+        a.showAndWait();
+    }
 }

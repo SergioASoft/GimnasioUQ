@@ -240,7 +240,81 @@ public class GimnasioUQ {
         return null;
     }
 
+    public boolean asignarMembresiaAUsuario(Usuario usuario, Membresia membresia) {
 
+        if (usuario == null || membresia == null) return false;
+
+        // Asignar relación bidireccional
+        usuario.setMembresia(membresia);
+        membresia.setUsuario(usuario);
+
+        // Activar membresía
+        membresia.setEstado(true);
+        membresia.setFechaInicio(LocalDate.now());
+        membresia.setFechaFin(LocalDate.now().plusMonths(membresia.getTipoMembresia().getMeses()));
+
+        return true;
+    }
+
+    // dentro de GimnasioUQ (ya existente), agrega:
+
+    // buscar usuario por id
+    public Usuario buscarUsuarioPorId(String id) {
+        if (id == null) return null;
+        for (Usuario u : listaUsuarios) {
+            if (id.equals(u.getIdentificacion())) return u;
+        }
+        return null;
+    }
+
+    // crear membresía para usuario y asignarla (devuelve la membresía creada)
+    public Membresia crearMembresiaParaUsuario(Usuario usuario, String tipoStr, TipoMembresia duracion) {
+        if (usuario == null || tipoStr == null || duracion == null) return null;
+
+        // normalizar tipoStr
+        String t = tipoStr.trim().toUpperCase();
+
+        double costoBase;
+        Membresia nueva;
+        switch (t) {
+            case "PREMIUM" -> { costoBase = 70000; nueva = new MembresiaPremium(duracion, costoBase, null, null, false); }
+            case "VIP", "VIP " -> { costoBase = 120000; nueva = new MembresiaVip(duracion, costoBase, null, null, false); }
+            default -> { costoBase = 40000; nueva = new MembresiaBasica(duracion, costoBase, null, null, false); }
+        }
+
+        // asignar tipo y activar según duracion
+        nueva.setTipoMembresia(duracion);
+        nueva.activarSegunTipo();           // set fechaInicio, fechaFin y estado = true
+        nueva.setUsuario(usuario);
+
+        // asignar a usuario y registrar en lista global
+        usuario.setMembresia(nueva);
+        listaMembresias.add(nueva);
+
+        return nueva;
+    }
+
+    // obtener todas las membresías existentes
+    public ArrayList<Membresia> obtenerTodasLasMembresias() {
+        return listaMembresias;
+    }
+
+    // buscar la membresía por id de usuario (retorna la membresía asociada si existe)
+    public Membresia buscarMembresiaPorIdUsuario(String idUsuario) {
+        Usuario u = buscarUsuarioPorId(idUsuario);
+        if (u == null) return null;
+        return u.getMembresia();
+    }
+
+    // cambiar estado de la membresía asociada a un usuario
+    public boolean cambiarEstadoMembresiaPorUsuarioId(String idUsuario) {
+        Membresia m = buscarMembresiaPorIdUsuario(idUsuario);
+        if (m == null) return false;
+        m.setEstado(!m.getEstado());
+        // si se desactiva, opcionalmente ajustar fechaFin
+        if (!m.getEstado()) m.setFechaFin(LocalDate.now().minusDays(1));
+        return true;
+    }
 
 
 }

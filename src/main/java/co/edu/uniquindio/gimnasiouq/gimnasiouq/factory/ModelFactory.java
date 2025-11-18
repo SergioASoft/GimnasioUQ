@@ -100,5 +100,27 @@ public class ModelFactory {
         return gimnasioUQ.buscarClasePorTipo(tipoClase);
     }
 
+    // devolver todas las membresías
+    public ArrayList<Membresia> obtenerTodasLasMembresias() {
+        return gimnasioUQ.obtenerTodasLasMembresias();
+    }
+
+    // crear y asignar membresía a usuario por id
+    public Membresia crearMembresiaParaUsuario(String idUsuario, String tipoStr, TipoMembresia duracion) {
+        Usuario u = gimnasioUQ.buscarUsuarioPorId(idUsuario);
+        if (u == null) return null;
+        return gimnasioUQ.crearMembresiaParaUsuario(u, tipoStr, duracion);
+    }
+
+    // buscar membresía por id de usuario
+    public Membresia buscarMembresiaPorIdUsuario(String idUsuario) {
+        return gimnasioUQ.buscarMembresiaPorIdUsuario(idUsuario);
+    }
+
+    // cambiar estado de membresía por idUsuario
+    public boolean cambiarEstadoMembresiaPorUsuarioId(String idUsuario) {
+        return gimnasioUQ.cambiarEstadoMembresiaPorUsuarioId(idUsuario);
+    }
+
 }
 

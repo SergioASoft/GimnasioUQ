@@ -2,6 +2,7 @@ package co.edu.uniquindio.gimnasiouq.gimnasiouq.controller;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.factory.*;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Clase;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Membresia;
+import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.TipoMembresia;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Usuario;
 
 import java.util.ArrayList;
@@ -42,4 +43,22 @@ public class RecepcionistaController {
     public static Clase buscarClasePorTipo(String tipoClase) {
         return ModelFactory.getInstance().buscarClasePorTipo(tipoClase);
     }
+
+    // en RecepcionistaController (tu clase existente)
+    public ArrayList<Membresia> obtenerTodasLasMembresias() {
+        return modelFactory.obtenerTodasLasMembresias();
+    }
+
+    public Membresia crearMembresiaParaUsuario(String idUsuario, String tipoStr, TipoMembresia duracion) {
+        return modelFactory.crearMembresiaParaUsuario(idUsuario, tipoStr, duracion);
+    }
+
+    public Membresia buscarMembresiaPorIdUsuario(String idUsuario) {
+        return modelFactory.buscarMembresiaPorIdUsuario(idUsuario);
+    }
+
+    public boolean cambiarEstadoMembresiaPorUsuarioId(String idUsuario) {
+        return modelFactory.cambiarEstadoMembresiaPorUsuarioId(idUsuario);
+    }
+
 }
