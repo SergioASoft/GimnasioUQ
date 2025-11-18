@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller.RecepcionistaRegistroUsuariosViewController">
+
+    <children>
+        <Separator layoutX="9.0" layoutY="42.0" prefHeight="459.0" prefWidth="843.0" />
+        <Label layoutX="24.0" layoutY="36.0" prefHeight="25.0" prefWidth="62.0" text="Nombre:">
+            <font>
+                <Font name="System Italic" size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="65.0" layoutY="91.0" prefHeight="14.0" prefWidth="21.0" text="Id:">
+            <font>
+                <Font name="System Italic" size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="424.0" layoutY="36.0" prefHeight="25.0" prefWidth="62.0" text="Apellido:">
+            <font>
+                <Font name="System Italic" size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="446.0" layoutY="85.0" prefHeight="35.0" prefWidth="121.0" text="Edad:">
+            <font>
+                <Font name="System Italic" size="16.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtNombre" layoutX="89.0" layoutY="36.0" prefHeight="26.0" prefWidth="260.0" promptText="Ingrese su nombre" />
+        <TextField fx:id="txtId" layoutX="89.0" layoutY="90.0" prefHeight="26.0" prefWidth="261.0" promptText="Ingrese su identificación" />
+        <TextField fx:id="txtEdad" layoutX="499.0" layoutY="90.0" prefHeight="26.0" prefWidth="261.0" promptText="Ingrese su edad" />
+        <TextField fx:id="txtApellido" layoutX="499.0" layoutY="35.0" prefHeight="26.0" prefWidth="260.0" promptText="Ingrese su apellido" />
+        <Label layoutX="18.0" layoutY="143.0" prefHeight="27.0" prefWidth="73.0" text="Teléfono:">
+            <font>
+                <Font name="System Italic" size="16.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtTelefono" layoutX="89.0" layoutY="144.0" prefHeight="26.0" prefWidth="261.0" promptText="Ingrese su número de teléfono" />
+        <Button fx:id="btnAgregarUsuario" layoutX="229.0" layoutY="238.0" mnemonicParsing="false" onAction="#OnActionAgregarUsuario" text="Agregar usuario" />
+        <TextField fx:id="txtCorreo" layoutX="499.0" layoutY="144.0" prefHeight="26.0" prefWidth="261.0" promptText="Ingrese su correo" />
+        <Label layoutX="431.0" layoutY="139.0" prefHeight="35.0" prefWidth="121.0" text="Correo:">
+            <font>
+                <Font name="System Italic" size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="35.0" layoutY="3.0" text="Información Registro">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <ComboBox fx:id="cmbTipoUsuario" layoutX="298.0" layoutY="192.0" prefHeight="26.0" prefWidth="214.0" promptText="Seleccionar" />
+        <Label layoutX="184.0" layoutY="195.0" text="Tipo de usuario">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+      <Button fx:id="btnActualizar" layoutX="372.0" layoutY="238.0" mnemonicParsing="false" onAction="#OnActionActualizar" text="Actualizar" />
+      <Button fx:id="btnEliminar" layoutX="479.0" layoutY="238.0" mnemonicParsing="false" onAction="#OnActionEliminar" text="Eliminar" />
+      <TableView fx:id="tableUsuarios" layoutX="18.0" layoutY="283.0" prefHeight="297.0" prefWidth="819.0">
+        <columns>
+          <TableColumn fx:id="tcNombre" prefWidth="94.40002632141113" text="Nombre" />
+          <TableColumn fx:id="tcApellido" prefWidth="130.39998626708984" text="Apellido" />
+            <TableColumn fx:id="tcId" prefWidth="65.5999755859375" text="Id" />
+            <TableColumn fx:id="tcEdad" minWidth="0.0" prefWidth="57.5999755859375" text="Edad" />
+            <TableColumn fx:id="tcTelefono" prefWidth="183.20010375976562" text="Teléfono" />
+            <TableColumn fx:id="tcCorreo" prefWidth="204.00006103515625" text="Correo" />
+            <TableColumn fx:id="tcTipo" minWidth="0.0" prefWidth="84.800048828125" text="Tipo" />
+        </columns>
+      </TableView>
+    </children>
+</AnchorPane>
