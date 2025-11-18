@@ -92,6 +92,20 @@ public class GimnasioUQ {
         return false;
     }
 
+    public boolean agregarUsuario(String nombre, String apellido, String identificacion, int edad, String telefono, String correo, String tipoUsuario) {
+        if (tipoUsuario.equals("Estudiante")) {
+            Estudiante nuevoEstudiante = new Estudiante(nombre, apellido, identificacion, edad, telefono, correo);
+            return listaUsuarios.add(nuevoEstudiante);
+        } else if (tipoUsuario.equals("Trabajador")) {
+            Trabajador nuevoTrabajador = new Trabajador(nombre, apellido, identificacion, edad, telefono, correo);
+            return listaUsuarios.add(nuevoTrabajador);
+        } else if (tipoUsuario.equals("Externo")) {
+            Externo nuevoExterno = new Externo(nombre, apellido, identificacion, edad, telefono, correo);
+            return listaUsuarios.add(nuevoExterno);
+        }else{
+            return false;
+        }
+    }
 }
 
 

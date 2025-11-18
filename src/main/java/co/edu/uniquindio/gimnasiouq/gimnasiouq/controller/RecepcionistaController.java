@@ -13,4 +13,8 @@ public class RecepcionistaController {
     public ArrayList<Usuario> obtenerUsuarios() {
         return modelFactory.obtenerUsuarios();
     }
+
+    public boolean agregarUsuario(String nombre, String apellido, String identificacion, int edad, String telefono, String correo, String tipoUsuario) {
+        return modelFactory.agregarUsuario(nombre, apellido, identificacion, edad, telefono, correo, tipoUsuario);
+    }
 }

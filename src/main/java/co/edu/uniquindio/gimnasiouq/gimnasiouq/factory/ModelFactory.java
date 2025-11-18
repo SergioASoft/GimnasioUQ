@@ -38,5 +38,9 @@ public class ModelFactory {
     public ArrayList<Usuario> obtenerUsuarios() {
         return gimnasioUQ.getListaUsuarios();
     }
+
+    public boolean agregarUsuario(String nombre, String apellido, String identificacion, int edad, String telefono, String correo, String tipoUsuario) {
+        return gimnasioUQ.agregarUsuario(nombre, apellido, identificacion, edad, telefono, correo, tipoUsuario);
+    }
 }
 

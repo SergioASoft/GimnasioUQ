@@ -75,7 +75,40 @@ public class RecepcionistaRegistroUsuariosViewController {
 
     @FXML
     void OnActionAgregarUsuario(ActionEvent event) {
+        agregarUsuario();
+    }
 
+    private void agregarUsuario() {
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String identificacion = txtId.getText();
+        String edadText = txtEdad.getText();
+        String telefono = txtTelefono.getText();
+        String correo = txtCorreo.getText();
+        String tipoUsuario = cmbTipoUsuario.getValue();
+
+        if (nombre.isEmpty() || apellido.isEmpty() || identificacion.isEmpty() || edadText.isEmpty() || telefono.isEmpty() || correo.isEmpty() || tipoUsuario.equals("Seleccionar")) {
+            mostrarMensaje("Error", "Campos incompletos", "Por favor, complete todos los campos.", Alert.AlertType.ERROR);
+            return;
+        }
+
+        int edad;
+        try {
+            edad = Integer.parseInt(edadText);
+        } catch (NumberFormatException e) {
+            mostrarMensaje("Error", "Edad inválida", "Por favor, ingrese un número válido para la edad.", Alert.AlertType.ERROR);
+            return;
+        }
+
+        boolean exito = recepcionistaController.agregarUsuario(nombre, apellido, identificacion, edad, telefono, correo, tipoUsuario);
+        if (exito) {
+            mostrarMensaje("Éxito", "Usuario agregado", "El usuario ha sido agregado exitosamente.", Alert.AlertType.INFORMATION);
+            listaUsuarios.clear();
+            obtenerUsuarios();
+            tableUsuarios.setItems(listaUsuarios);
+        } else {
+            mostrarMensaje("Error", "Fallo al agregar usuario", "No se pudo agregar el usuario. Verifique los datos e intente nuevamente.", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
