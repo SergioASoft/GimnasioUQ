@@ -2,24 +2,38 @@
 
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<TabPane fx:id="tabPanePrincipal" xmlns:fx="http://javafx.com/fxml"
-         fx:controller="co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller.RecepcionistaViewController">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
-    <tabs>
-        <Tab text="Registro de Usuarios">
-            <fx:include source="RecepcionistaRegistroUsuarios.fxml" />
-        </Tab>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller.RecepcionistaViewController">
+    <top>
+        <HBox style="-fx-padding: 10; -fx-spacing: 10; -fx-alignment: CENTER_RIGHT;">
+            <Button fx:id="btnCerrarSesion" text="Cerrar Sesión" 
+                    onAction="#OnActionCerrarSesion"
+                    style="-fx-font-size: 12; -fx-padding: 8;"/>
+        </HBox>
+    </top>
+    <center>
+        <TabPane fx:id="tabPanePrincipal">
+            <tabs>
+                <Tab text="Registro de Usuarios">
+                    <fx:include source="RecepcionistaRegistroUsuarios.fxml" />
+                </Tab>
 
-        <Tab text="Asignación de Membresías">
-            <fx:include source="RecepcionistaAsignacionMembresias.fxml" />
-        </Tab>
+                <Tab text="Asignación de Membresías">
+                    <fx:include source="RecepcionistaAsignacionMembresias.fxml" />
+                </Tab>
 
-        <Tab text="Reportes">
-            <fx:include source="RecepcionistaReportes.fxml" />
-        </Tab>
+                <Tab text="Reportes">
+                    <fx:include source="RecepcionistaReportes.fxml" />
+                </Tab>
 
-        <Tab text="Reserva de clases">
-            <fx:include source="RecepcionistaReservadeClases.fxml" />
-        </Tab>
-    </tabs>
-</TabPane>
+                <Tab text="Reserva de clases">
+                    <fx:include source="RecepcionistaReservadeClases.fxml" />
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>

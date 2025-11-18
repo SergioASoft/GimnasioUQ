@@ -11,7 +11,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AdministradorGeneradordeRegistroAvanzadoViewController {
+
     private final AdministradorController controller = new AdministradorController();
+
 
     @FXML private ComboBox<String> cmbReportes;
     @FXML private TableView tablaReportes;
@@ -27,7 +29,11 @@ public class AdministradorGeneradordeRegistroAvanzadoViewController {
 
     @FXML
     public void initialize() {
-        cmbReportes.getItems().addAll("Estadística de Asistencia", "Ingresos por Membresías", "Clases más populares");
+        cmbReportes.getItems().addAll(
+                "Estadística de Asistencia",
+                "Ingresos por Membresías",
+                "Clases más populares"
+        );
         cmbReportes.getSelectionModel().selectFirst();
         cmbReportes.setOnAction(event -> actualizarTablaReporte());
         configurarColumnas();
@@ -42,7 +48,9 @@ public class AdministradorGeneradordeRegistroAvanzadoViewController {
         if (colClase != null)
             colClase.setCellValueFactory(new PropertyValueFactory<>("clase"));
         if (colFecha != null)
-            colFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFechaInicio().toString()));
+            colFecha.setCellValueFactory(cellData ->
+                    new SimpleStringProperty(cellData.getValue().getFechaInicio().toString())
+            );
         if (colValor != null)
             colValor.setCellValueFactory(new PropertyValueFactory<>("costo"));
         if (colNombreClase != null)
@@ -66,18 +74,18 @@ public class AdministradorGeneradordeRegistroAvanzadoViewController {
 
     private void actualizarTablaReporte() {
         String seleccion = cmbReportes.getValue();
+
         if ("Estadística de Asistencia".equals(seleccion)) {
             mostrarColumnas(true, false, false);
-            ObservableList<ReservaClase> datos = FXCollections.observableArrayList(controller.getReporteAsistencias());
-            tablaReportes.setItems(datos);
+            tablaReportes.setItems(FXCollections.observableArrayList(controller.getReporteAsistencias()));
+
         } else if ("Ingresos por Membresías".equals(seleccion)) {
             mostrarColumnas(false, true, false);
-            ObservableList<Membresia> datos = FXCollections.observableArrayList(controller.getReporteIngresosMembresias());
-            tablaReportes.setItems(datos);
+            tablaReportes.setItems(FXCollections.observableArrayList(controller.getReporteIngresosMembresias()));
+
         } else if ("Clases más populares".equals(seleccion)) {
             mostrarColumnas(false, false, true);
-            ObservableList<Clase> datos = FXCollections.observableArrayList(controller.getClasesMasPopulares());
-            tablaReportes.setItems(datos);
+            tablaReportes.setItems(FXCollections.observableArrayList(controller.getClasesMasPopulares()));
         }
     }
 

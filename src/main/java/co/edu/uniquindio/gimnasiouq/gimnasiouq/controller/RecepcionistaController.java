@@ -1,9 +1,6 @@
 package co.edu.uniquindio.gimnasiouq.gimnasiouq.controller;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.factory.*;
-import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Clase;
-import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Membresia;
-import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.TipoMembresia;
-import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Usuario;
+import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.*;
 
 import java.util.ArrayList;
 
@@ -12,6 +9,8 @@ public class RecepcionistaController {
     public RecepcionistaController() {
         modelFactory = ModelFactory.getInstance();
     }
+
+
 
     public ArrayList<Usuario> obtenerUsuarios() {
         return modelFactory.obtenerUsuarios();
@@ -60,5 +59,7 @@ public class RecepcionistaController {
     public boolean cambiarEstadoMembresiaPorUsuarioId(String idUsuario) {
         return modelFactory.cambiarEstadoMembresiaPorUsuarioId(idUsuario);
     }
+
+
 
 }

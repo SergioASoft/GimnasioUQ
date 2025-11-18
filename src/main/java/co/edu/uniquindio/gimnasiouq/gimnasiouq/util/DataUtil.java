@@ -6,9 +6,10 @@ import java.time.LocalDate;
 public class DataUtil {
     public static GimnasioUQ inicializarDatos() {
 
-        GimnasioUQ gimnasio = new GimnasioUQ();
 
+        GimnasioUQ gimnasio = GimnasioUQ.getInstance();
         gimnasio.setNombre("Gimnasio UQ");
+
         Estudiante estudiante1 = new Estudiante("Juan", "Perez", "123456789", 25, "3001234567", "juan@gmail.com");
         Estudiante estudiante2 = new Estudiante("Maria", "Gomez", "987654321", 22, "3007654321", "maria@gmail.com");
         Trabajador trabajador1 = new Trabajador("Carlos", "Lopez", "456789123", 30, "3004567890", "carlos@gmail.com");
@@ -69,4 +70,5 @@ public class DataUtil {
         return gimnasio;
 
     }
+
 }

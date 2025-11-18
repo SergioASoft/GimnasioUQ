@@ -14,6 +14,8 @@ public class AdministradorController {
         modelFactory = ModelFactory.getInstance();
     }
 
+
+
     public boolean asignarClaseAEntrenador(Entrenador entrenadorSeleccionado, Clase claseSeleccionada) {
         return modelFactory.asignarClaseAEntrenador(entrenadorSeleccionado, claseSeleccionada);
     }

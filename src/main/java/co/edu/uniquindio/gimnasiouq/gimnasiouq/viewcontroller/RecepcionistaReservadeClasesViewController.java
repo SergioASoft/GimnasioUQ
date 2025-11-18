@@ -2,6 +2,7 @@ package co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.controller.RecepcionistaController;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Clase;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.TipoClase;
@@ -15,14 +16,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 public class RecepcionistaReservadeClasesViewController implements Initializable {
-
+    private final RecepcionistaController controller = new RecepcionistaController();
     @FXML private Button btnRegistrarAsistencia;
     @FXML private ComboBox<TipoClase> cmbClase;
     @FXML private Label txtReservaClases;
-    @FXML private Label txtReservaClases1;
-    @FXML private Label txtReservaClases11;
-    // Si quieres ComboBox de usuario:
-    // @FXML private ComboBox<Usuario> cmbUsuario;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,7 +48,6 @@ public class RecepcionistaReservadeClasesViewController implements Initializable
     }
 
     private void mostrarMensaje(String mensaje) {
-        // Puedes mostrar en un Label:
         txtReservaClases.setText(mensaje);
         // O bien en un Alert de JavaFX:
         // new Alert(Alert.AlertType.INFORMATION, mensaje).showAndWait();
@@ -57,6 +55,14 @@ public class RecepcionistaReservadeClasesViewController implements Initializable
 
     private Usuario obtenerUsuarioSeleccionado() {
         return null;
+    }
+
+    public Button getBtnRegistrarAsistencia() {
+        return btnRegistrarAsistencia;
+    }
+
+    public void setBtnRegistrarAsistencia(Button btnRegistrarAsistencia) {
+        this.btnRegistrarAsistencia = btnRegistrarAsistencia;
     }
 }
 

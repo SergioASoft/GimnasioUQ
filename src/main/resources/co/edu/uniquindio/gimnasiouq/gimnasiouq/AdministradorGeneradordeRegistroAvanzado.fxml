@@ -33,14 +33,14 @@
                    layoutX="10.0" layoutY="189.0"
                    prefHeight="282.0" prefWidth="702.0">
             <columns>
-                <TableColumn fx:id="colNumReserva" text="N° Reserva" prefWidth="90"/>
-                <TableColumn fx:id="colUsuario" text="Usuario" prefWidth="120"/>
-                <TableColumn fx:id="colClase" text="Clase" prefWidth="120"/>
-                <TableColumn fx:id="colFecha" text="Fecha" prefWidth="100"/>
-                <TableColumn fx:id="colValor" text="Valor" prefWidth="80"/>
-                <TableColumn fx:id="colNombreClase" text="Clase" prefWidth="120"/>
-                <TableColumn fx:id="colTipoClase" text="Tipo" prefWidth="90"/>
-                <TableColumn fx:id="colReservas" text="Reservas" prefWidth="80"/>
+                <TableColumn fx:id="colNumReserva" text="N° Reserva" prefWidth="115" visible="true"/>
+                <TableColumn fx:id="colUsuario" text="Usuario" prefWidth="175" visible="true"/>
+                <TableColumn fx:id="colClase" text="Clase" prefWidth="175" visible="true"/>
+                <TableColumn fx:id="colFecha" text="Fecha" prefWidth="120" visible="false"/>
+                <TableColumn fx:id="colValor" text="Valor ($)" prefWidth="100" visible="false"/>
+                <TableColumn fx:id="colNombreClase" text="Nombre Clase" prefWidth="150" visible="false"/>
+                <TableColumn fx:id="colTipoClase" text="Tipo Clase" prefWidth="120" visible="false"/>
+                <TableColumn fx:id="colReservas" text="Reservas" prefWidth="100" visible="false"/>
             </columns>
         </TableView>
         <Separator layoutX="10.0" layoutY="176.0"

@@ -179,7 +179,7 @@ public class GimnasioUQ {
         }
         return false;
     }
-    // Reporte asistencias
+
     public ArrayList<ReservaClase> getReporteAsistencias() {
         return listaReservasClases;
     }
