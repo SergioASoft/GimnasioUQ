@@ -1,10 +1,7 @@
 package co.edu.uniquindio.gimnasiouq.gimnasiouq.factory;
 
 
-import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Clase;
-import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Entrenador;
-import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.GimnasioUQ;
-import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Usuario;
+import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.*;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.util.DataUtil;
 
 import java.util.ArrayList;
@@ -75,6 +72,15 @@ public class ModelFactory {
 
     public boolean eliminarEntrenador(String identificacion) {
         return gimnasioUQ.eliminarEntrenador(identificacion);
+    }
+    public ArrayList<ReservaClase> getReporteAsistencias() {
+        return gimnasioUQ.getReporteAsistencias();
+    }
+    public ArrayList<Membresia> getReporteIngresosMembresias() {
+        return gimnasioUQ.getReporteIngresosMembresias();
+    }
+    public ArrayList<Clase> getClasesMasPopulares() {
+        return gimnasioUQ.getClasesMasPopulares();
     }
 }
 

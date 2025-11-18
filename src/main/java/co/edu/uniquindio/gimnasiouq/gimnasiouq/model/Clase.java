@@ -9,6 +9,7 @@ public class Clase {
     private int cupoMaximo;
     private TipoClase tipoClase;
     private Entrenador entrenador;
+    private int contadorReservas = 0; // <-- El contador
 
     public Clase(String nombre, LocalDate horarioInicio, LocalDate horarioFin, int cupoMaximo, TipoClase tipoClase, Entrenador entrenador) {
         this.nombre = nombre;
@@ -65,6 +66,13 @@ public class Clase {
 
     public void setTipoClase(TipoClase tipoClase) {
         this.tipoClase = tipoClase;
+    }
+    public void incrementarReserva() {
+        contadorReservas++;
+    }
+
+    public int getContadorReservas() {
+        return contadorReservas;
     }
 }
 

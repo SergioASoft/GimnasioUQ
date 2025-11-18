@@ -178,4 +178,28 @@ public class GimnasioUQ {
         }
         return false;
     }
+    // Reporte asistencias
+    public ArrayList<ReservaClase> getReporteAsistencias() {
+        return listaReservasClases;
+    }
+
+    // Reporte ingresos
+    public ArrayList<Membresia> getReporteIngresosMembresias() {
+        return listaMembresias;
+    }
+
+    // Reporte clases populares
+    public ArrayList<Clase> getClasesMasPopulares() {
+        return listaClases;
+    }
+
+    // Método para reservar clase y actualizar popularidad
+    public boolean reservarClase(Usuario usuario, Clase clase) {
+        if (usuario == null || clase == null) return false;
+        ReservaClase reserva = new ReservaClase("R" + (listaReservasClases.size()+1), usuario.getNombre(), clase.getNombre());
+        listaReservasClases.add(reserva);
+        clase.incrementarReserva();
+        return true;
+    }
 }
+

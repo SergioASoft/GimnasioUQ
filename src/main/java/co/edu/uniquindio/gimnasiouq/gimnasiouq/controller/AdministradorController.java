@@ -3,6 +3,8 @@ package co.edu.uniquindio.gimnasiouq.gimnasiouq.controller;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.factory.ModelFactory;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Clase;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Entrenador;
+import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Membresia;
+import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.ReservaClase;
 
 import java.util.ArrayList;
 
@@ -35,6 +37,17 @@ public class AdministradorController {
     public boolean eliminarEntrenador(String identificacion) {
         return modelFactory.eliminarEntrenador(identificacion);
     }
-}
+
+        public ArrayList<ReservaClase> getReporteAsistencias() {
+            return ModelFactory.getInstance().getReporteAsistencias();
+        }
+        public ArrayList<Membresia> getReporteIngresosMembresias() {
+            return ModelFactory.getInstance().getReporteIngresosMembresias();
+        }
+        public ArrayList<Clase> getClasesMasPopulares() {
+            return ModelFactory.getInstance().getClasesMasPopulares();
+        }
+    }
+
 
 
