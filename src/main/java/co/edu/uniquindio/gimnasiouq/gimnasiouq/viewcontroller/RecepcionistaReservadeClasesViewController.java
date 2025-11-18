@@ -2,49 +2,64 @@ package co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import co.edu.uniquindio.gimnasiouq.gimnasiouq.controller.RecepcionistaController;
+import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Clase;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.TipoClase;
+import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
-public class RecepcionistaReservadeClasesViewController {
+public class RecepcionistaReservadeClasesViewController implements Initializable {
 
-    @FXML
-    private ResourceBundle resources;
+    @FXML private Button btnRegistrarAsistencia;
+    @FXML private ComboBox<TipoClase> cmbClase;
+    @FXML private Label txtReservaClases;
+    @FXML private Label txtReservaClases1;
+    @FXML private Label txtReservaClases11;
+    // Si quieres ComboBox de usuario:
+    // @FXML private ComboBox<Usuario> cmbUsuario;
 
-    @FXML
-    private URL location;
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        cmbClase.getItems().addAll(TipoClase.YOGA, TipoClase.ZUMBA, TipoClase.SPINNING);
+        cmbClase.setValue(TipoClase.YOGA);
 
-    @FXML
-    private Button btnRegistrarAsistencia;
-
-    @FXML
-    private ComboBox<TipoClase> cmbClase;
-
-    @FXML
-    private Label txtReservaClases;
-
-    @FXML
-    private Label txtReservaClases1;
-
-    @FXML
-    private Label txtReservaClases11;
+    }
 
     @FXML
     void OnActionRegistrarAsistencia(ActionEvent event) {
-
+        Usuario usuarioSeleccionado = obtenerUsuarioSeleccionado();
+        if (usuarioSeleccionado == null) {
+            mostrarMensaje("Selecciona usuario valido.");
+            return;
+        }
+        TipoClase tipoClaseSeleccionado = cmbClase.getValue();
+        Clase claseSeleccionada = RecepcionistaController.buscarClasePorTipo(tipoClaseSeleccionado.name());
+        if (claseSeleccionada == null) {
+            mostrarMensaje("Clase no encontrada.");
+            return;
+        }
+        boolean exito = RecepcionistaController.registrarAsistenciaAClase(usuarioSeleccionado, claseSeleccionada);
+        mostrarMensaje(exito ? "¡La asistencia ha sido registrada!" : "No se pudo registrar la asistencia.");
     }
 
-    @FXML
-    void initialize() {
-    cmbClase.getItems().addAll(TipoClase.YOGA, TipoClase.ZUMBA, TipoClase.SPINNING);
-    cmbClase.setValue(TipoClase.YOGA);
-
+    private void mostrarMensaje(String mensaje) {
+        // Puedes mostrar en un Label:
+        txtReservaClases.setText(mensaje);
+        // O bien en un Alert de JavaFX:
+        // new Alert(Alert.AlertType.INFORMATION, mensaje).showAndWait();
     }
 
+    private Usuario obtenerUsuarioSeleccionado() {
+        return null;
+    }
 }
+
+
+
 

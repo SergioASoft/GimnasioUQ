@@ -225,5 +225,23 @@ public class GimnasioUQ {
         }
         return porVencer;
     }
+    public boolean registrarReservaClase(Usuario usuario, Clase clase) {
+        if (usuario == null || clase == null) return false;
+        String numReserva = "R" + (listaReservasClases.size() + 1);
+        ReservaClase reserva = new ReservaClase(numReserva, usuario.getNombre(), clase.getNombre());
+        listaReservasClases.add(reserva);
+        clase.incrementarReserva();
+        return true;
+    }
+
+
+    public Clase buscarClasePorTipo(String tipoClase) {
+        for (Clase c : listaClases) if (c.getTipoClase().equals(tipoClase)) return c;
+        return null;
+    }
+
+
+
+
 }
 

@@ -36,4 +36,10 @@ public class RecepcionistaController {
     public ArrayList<Membresia> getMembresiasPorVencer(int diasALimite) {
         return ModelFactory.getInstance().getMembresiasPorVencer(diasALimite);
     }
+    public static boolean registrarAsistenciaAClase(Usuario usuario, Clase clase) {
+        return ModelFactory.getInstance().registrarReservaClase(usuario, clase);
+    }
+    public static Clase buscarClasePorTipo(String tipoClase) {
+        return ModelFactory.getInstance().buscarClasePorTipo(tipoClase);
+    }
 }

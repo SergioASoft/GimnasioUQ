@@ -53,7 +53,7 @@ public class RecepcionistaReportesViewController {
             }
         } else if ("Membresías próximas a vencer".equals(seleccion)) {
             for (Membresia m : controller.getMembresiasPorVencer(10)) {
-                resultado.append("Usuario: ").append(m.getUsuarioName()) // adapta esto a tu modelo
+                resultado.append("Usuario: ").append(m.getUsuarioName())
                         .append(" | Vence: ").append(m.getFechaFin())
                         .append("\n");
             }

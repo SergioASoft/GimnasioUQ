@@ -91,5 +91,14 @@ public class ModelFactory {
     public ArrayList<Membresia> getMembresiasPorVencer(int diasALimite) {
         return gimnasioUQ.getMembresiasPorVencer(diasALimite);
     }
+
+    public boolean registrarReservaClase(Usuario usuario, Clase clase) {
+        return gimnasioUQ.registrarReservaClase(usuario, clase);
+    }
+
+    public Clase buscarClasePorTipo(String tipoClase) {
+        return gimnasioUQ.buscarClasePorTipo(tipoClase);
+    }
+
 }
 
