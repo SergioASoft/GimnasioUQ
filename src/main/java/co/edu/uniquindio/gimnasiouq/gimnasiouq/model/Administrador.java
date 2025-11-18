@@ -13,7 +13,7 @@ public class Administrador extends Empleado{
     public void setPassword(String password) {
         this.password = password;
     }
-    public Administrador(String nombre, int identificacion, int telefono, String password) {
+    public Administrador(String nombre, String identificacion, String telefono, String password) {
         super(nombre, identificacion, telefono);
         this.password = password;
     }

@@ -2,10 +2,10 @@ package co.edu.uniquindio.gimnasiouq.gimnasiouq.model;
 
 public abstract class Empleado {
     private String nombre;
-    private int identificacion;
-    private int telefono;
+    private String identificacion;
+    private String telefono;
 
-    public Empleado(String nombre, int identificacion, int telefono) {
+    public Empleado(String nombre, String identificacion, String telefono) {
         this.nombre = nombre;
         this.identificacion = identificacion;
         this.telefono = telefono;
@@ -20,19 +20,19 @@ public abstract class Empleado {
         this.nombre = nombre;
     }
 
-    public int getIdentificacion() {
+    public String getIdentificacion() {
         return identificacion;
     }
 
-    public void setIdentificacion(int identificacion) {
+    public void setIdentificacion(String identificacion) {
         this.identificacion = identificacion;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 }

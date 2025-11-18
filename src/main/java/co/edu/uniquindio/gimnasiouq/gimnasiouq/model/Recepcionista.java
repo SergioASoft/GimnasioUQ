@@ -2,7 +2,7 @@ package co.edu.uniquindio.gimnasiouq.gimnasiouq.model;
 
 public class Recepcionista extends Empleado{
     private String password;
-    public Recepcionista(String nombre, int identificacion, int telefono, String password) {
+    public Recepcionista(String nombre, String identificacion, String telefono, String password) {
         super(nombre, identificacion, telefono);
         this.password=password;
     }

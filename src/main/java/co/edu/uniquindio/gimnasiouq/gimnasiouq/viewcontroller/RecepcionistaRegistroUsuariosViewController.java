@@ -1,3 +1,4 @@
+
 package co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller;
 
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.controller.RecepcionistaController;
@@ -70,7 +71,44 @@ public class RecepcionistaRegistroUsuariosViewController {
 
     @FXML
     void OnActionActualizar(ActionEvent event) {
+        actualizarUsuario();
+    }
 
+    private void actualizarUsuario() {
+        if (usuarioSeleccionado != null) {
+            String nombre = txtNombre.getText();
+            String apellido = txtApellido.getText();
+            String identificacion = txtId.getText();
+            String edadText = txtEdad.getText();
+            String telefono = txtTelefono.getText();
+            String correo = txtCorreo.getText();
+            String tipoUsuario = cmbTipoUsuario.getValue();
+
+            if (nombre.isEmpty() || apellido.isEmpty() || identificacion.isEmpty() || edadText.isEmpty() || telefono.isEmpty() || correo.isEmpty()) {
+                mostrarMensaje("Error", "Campos incompletos", "Por favor, complete todos los campos.", Alert.AlertType.ERROR);
+                return;
+            }
+
+            int edad;
+            try {
+                edad = Integer.parseInt(edadText);
+            } catch (NumberFormatException e) {
+                mostrarMensaje("Error", "Edad inválida", "Por favor, ingrese un número válido para la edad.", Alert.AlertType.ERROR);
+                return;
+            }
+
+            boolean exito = recepcionistaController.actualizarUsuario(usuarioSeleccionado, nombre, apellido, identificacion, edad, telefono, correo);
+            if (exito) {
+                mostrarMensaje("Éxito", "Usuario actualizado", "El usuario ha sido actualizado exitosamente.", Alert.AlertType.INFORMATION);
+                listaUsuarios.clear();
+                obtenerUsuarios();
+                tableUsuarios.setItems(listaUsuarios);
+            } else {
+                mostrarMensaje("Error", "Fallo al actualizar usuario", "No se pudo actualizar el usuario. Verifique los datos e intente nuevamente.", Alert.AlertType.ERROR);
+            }
+        } else {
+            mostrarMensaje("Error", "Ningún usuario seleccionado", "Por favor, seleccione un usuario para actualizar.", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
@@ -113,7 +151,26 @@ public class RecepcionistaRegistroUsuariosViewController {
 
     @FXML
     void OnActionEliminar(ActionEvent event) {
+        eliminar();
+    }
 
+    private void eliminar() {
+        String identificacion = txtId.getText();
+        if (usuarioSeleccionado != null) {
+
+            Boolean eliminado=recepcionistaController.eliminarUsuario(identificacion);
+            if (eliminado) {
+                listaUsuarios.remove(usuarioSeleccionado);
+                tableUsuarios.setItems(listaUsuarios);
+                mostrarInformacion(null);
+                mostrarMensaje("Éxito", "Usuario eliminado", "El usuario ha sido eliminado exitosamente.", Alert.AlertType.INFORMATION);
+            }
+            else {
+                mostrarMensaje("Error", "Fallo al eliminar usuario", "No se pudo eliminar el usuario. Verifique los datos e intente nuevamente.", Alert.AlertType.ERROR);
+            }
+        } else {
+            mostrarMensaje("Error", "Ningún usuario seleccionado", "Por favor, seleccione un usuario para eliminar.", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
@@ -179,3 +236,5 @@ public class RecepcionistaRegistroUsuariosViewController {
         aler.showAndWait();
     }
 }
+
+

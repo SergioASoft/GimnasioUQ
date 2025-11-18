@@ -106,14 +106,76 @@ public class GimnasioUQ {
             return false;
         }
     }
+
+    public Boolean eliminarUsuario(String identificacion) {
+        for (Usuario usuario : listaUsuarios) {
+            if (usuario.getIdentificacion().equals(identificacion)) {
+                listaUsuarios.remove(usuario);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean actualizarUsuario(Usuario usuarioSeleccionado, String nombre, String apellido, String identificacion, int edad, String telefono, String correo) {
+        if (usuarioSeleccionado != null) {
+            usuarioSeleccionado.setNombre(nombre);
+            usuarioSeleccionado.setApellido(apellido);
+            usuarioSeleccionado.setIdentificacion(identificacion);
+            usuarioSeleccionado.setEdad(edad);
+            usuarioSeleccionado.setTelefono(telefono);
+            usuarioSeleccionado.setCorreo(correo);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean asignarClaseAEntrenador(Entrenador entrenadorSeleccionado, Clase claseSeleccionada) {
+        if (claseSeleccionada.getEntrenador() != null) {
+            return false; // ya tiene entrenador → no se puede reasignar
+        }
+
+        // Asignar el entrenador
+        claseSeleccionada.setEntrenador(entrenadorSeleccionado);
+
+        // Agregar la clase al entrenador (si tienes esa lista)
+        entrenadorSeleccionado.getListaClases().add(claseSeleccionada);
+
+        return true;
+    }
+
+    public ArrayList<Entrenador> obtenerEntrenadores() {
+        ArrayList<Entrenador> entrenadores = new ArrayList<>();
+        for (Empleado empleado : listaEmpleados) {
+            if (empleado instanceof Entrenador) {
+                entrenadores.add((Entrenador) empleado);
+            }
+        }
+        return entrenadores;
+    }
+
+    public boolean registrarEntrenador(String id, String nombre, String telefono) {
+        Entrenador nuevoEntrenador = new Entrenador(id, nombre, telefono);
+        return listaEmpleados.add(nuevoEntrenador);
+    }
+
+    public boolean modificarEntrenador(Entrenador entrenadorSeleccionado, String id, String nombre, String telefono) {
+        if (entrenadorSeleccionado != null) {
+            entrenadorSeleccionado.setIdentificacion(id);
+            entrenadorSeleccionado.setNombre(nombre);
+            entrenadorSeleccionado.setTelefono(telefono);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean eliminarEntrenador(String identificacion) {
+        for (Empleado empleado : listaEmpleados) {
+            if (empleado instanceof Entrenador && empleado.getIdentificacion().equals(identificacion)) {
+                listaEmpleados.remove(empleado);
+                return true;
+            }
+        }
+        return false;
+    }
 }
-
-
-   // public Collection<Estudiante> getListaEstudiantes() {
-   // }
-
-   // public Collection<Trabajador> getListaTrabajadores() {
-   // }
-
-    //public Collection<Externo> getListaExternos() {
-    //}}

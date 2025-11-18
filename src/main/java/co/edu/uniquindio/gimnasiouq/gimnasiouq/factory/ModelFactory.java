@@ -1,6 +1,8 @@
 package co.edu.uniquindio.gimnasiouq.gimnasiouq.factory;
 
 
+import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Clase;
+import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Entrenador;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.GimnasioUQ;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.Usuario;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.util.DataUtil;
@@ -41,6 +43,38 @@ public class ModelFactory {
 
     public boolean agregarUsuario(String nombre, String apellido, String identificacion, int edad, String telefono, String correo, String tipoUsuario) {
         return gimnasioUQ.agregarUsuario(nombre, apellido, identificacion, edad, telefono, correo, tipoUsuario);
+    }
+
+    public Boolean eliminarUsuario(String identificacion) {
+        return gimnasioUQ.eliminarUsuario(identificacion);
+    }
+
+    public boolean actualizarUsuario(Usuario usuarioSeleccionado, String nombre, String apellido, String identificacion, int edad, String telefono, String correo) {
+        return gimnasioUQ.actualizarUsuario(usuarioSeleccionado, nombre, apellido, identificacion, edad, telefono, correo);
+    }
+
+    public boolean asignarClaseAEntrenador(Entrenador entrenadorSeleccionado, Clase claseSeleccionada) {
+        return gimnasioUQ.asignarClaseAEntrenador(entrenadorSeleccionado, claseSeleccionada);
+    }
+
+    public ArrayList<Entrenador> obtenerEntrenadores() {
+        return gimnasioUQ.obtenerEntrenadores();
+    }
+
+    public ArrayList<Clase> obtenerClases() {
+        return gimnasioUQ.getListaClases();
+    }
+
+    public boolean registrarEntrenador(String id, String nombre, String telefono) {
+        return gimnasioUQ.registrarEntrenador(id, nombre, telefono);
+    }
+
+    public boolean modificarEntrenador(Entrenador entrenadorSeleccionado, String id, String nombre, String telefono) {
+        return gimnasioUQ.modificarEntrenador(entrenadorSeleccionado, id, nombre, telefono);
+    }
+
+    public boolean eliminarEntrenador(String identificacion) {
+        return gimnasioUQ.eliminarEntrenador(identificacion);
     }
 }
 

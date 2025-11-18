@@ -1,6 +1,8 @@
 package co.edu.uniquindio.gimnasiouq.gimnasiouq.util;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.*;
 
+import java.time.LocalDate;
+
 public class DataUtil {
     public static GimnasioUQ inicializarDatos() {
 
@@ -32,6 +34,37 @@ public class DataUtil {
         gimnasio.getListaMembresias().add(membresiaVip);
         gimnasio.getListaMembresias().add(membresiaPremium);
         gimnasio.getListaMembresias().add(membresiaBasica);
+
+        Clase yoga = new Clase(
+                "Yoga mañanas",
+                LocalDate.now(),
+                LocalDate.now().plusDays(1),
+                20,
+                TipoClase.YOGA,
+                null // sin entrenador al inicio
+        );
+
+        Clase spinning = new Clase(
+                "Spinning alto rendimiento",
+                LocalDate.now(),
+                LocalDate.now().plusDays(1),
+                15,
+                TipoClase.SPINNING,
+                null
+        );
+
+        Clase zumba = new Clase(
+                "Zumba nocturna",
+                LocalDate.now(),
+                LocalDate.now().plusDays(1),
+                25,
+                TipoClase.ZUMBA,
+                null
+        );
+        gimnasio.getListaClases().add(yoga);
+        gimnasio.getListaClases().add(spinning);
+        gimnasio.getListaClases().add(zumba);
+
 
         return gimnasio;
 

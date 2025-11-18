@@ -17,4 +17,12 @@ public class RecepcionistaController {
     public boolean agregarUsuario(String nombre, String apellido, String identificacion, int edad, String telefono, String correo, String tipoUsuario) {
         return modelFactory.agregarUsuario(nombre, apellido, identificacion, edad, telefono, correo, tipoUsuario);
     }
+
+    public Boolean eliminarUsuario(String identificacion) {
+        return modelFactory.eliminarUsuario(identificacion);
+    }
+
+    public boolean actualizarUsuario(Usuario usuarioSeleccionado, String nombre, String apellido, String identificacion, int edad, String telefono, String correo) {
+        return modelFactory.actualizarUsuario(usuarioSeleccionado, nombre, apellido, identificacion, edad, telefono, correo);
+    }
 }

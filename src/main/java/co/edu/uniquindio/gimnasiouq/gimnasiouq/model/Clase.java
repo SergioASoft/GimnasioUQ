@@ -8,13 +8,23 @@ public class Clase {
     private LocalDate horarioFin;
     private int cupoMaximo;
     private TipoClase tipoClase;
+    private Entrenador entrenador;
 
-    public Clase(String nombre, LocalDate horarioInicio, LocalDate horarioFin, int cupoMaximo, TipoClase tipoClase) {
+    public Clase(String nombre, LocalDate horarioInicio, LocalDate horarioFin, int cupoMaximo, TipoClase tipoClase, Entrenador entrenador) {
         this.nombre = nombre;
         this.horarioInicio = horarioInicio;
         this.horarioFin = horarioFin;
         this.cupoMaximo = cupoMaximo;
         this.tipoClase = tipoClase;
+        this.entrenador = entrenador;
+    }
+
+    public Entrenador getEntrenador() {
+        return entrenador;
+    }
+
+    public void setEntrenador(Entrenador entrenador) {
+        this.entrenador = entrenador;
     }
 
     public String getNombre() {
@@ -57,3 +67,5 @@ public class Clase {
         this.tipoClase = tipoClase;
     }
 }
+
+
