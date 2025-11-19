@@ -122,5 +122,8 @@ public class ModelFactory {
         return gimnasioUQ.cambiarEstadoMembresiaPorUsuarioId(idUsuario);
     }
 
+    public Usuario buscarUsuarioPorId(String id) {
+        return gimnasioUQ.buscarUsuarioPorId(id);
+    }
 }
 

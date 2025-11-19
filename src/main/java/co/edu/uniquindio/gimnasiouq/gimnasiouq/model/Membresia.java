@@ -21,31 +21,66 @@ public abstract class Membresia implements IMembresia {
         this.estado = estado;
     }
 
-    public TipoMembresia getTipoMembresia() { return tipoMembresia; }
-    public void setTipoMembresia(TipoMembresia tipoMembresia) { this.tipoMembresia = tipoMembresia; }
+    public TipoMembresia getTipoMembresia() {
+        return tipoMembresia;
+    }
 
-    public double getCosto() { return costo; }
-    public void setCosto(double costo) { this.costo = costo; }
+    public void setTipoMembresia(TipoMembresia tipoMembresia) {
+        this.tipoMembresia = tipoMembresia;
+    }
 
-    public LocalDate getFechaInicio() { return fechaInicio; }
-    public void setFechaInicio(LocalDate fechaInicio) { this.fechaInicio = fechaInicio; }
+    public double getCosto() {
+        return costo;
+    }
 
-    public LocalDate getFechaFin() { return fechaFin; }
-    public void setFechaFin(LocalDate fechaFin) { this.fechaFin = fechaFin; }
+    public void setCosto(double costo) {
+        this.costo = costo;
+    }
 
-    public boolean getEstado() { return estado; }
-    public void setEstado(boolean estado) { this.estado = estado; }
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
 
-    public Usuario getUsuario() { return usuario; }
-    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public LocalDate getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(LocalDate fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public String getUsuarioName() {
         return usuario != null ? usuario.getNombre() : "Desconocido";
     }
 
-    /** Helper: activa la membresía calculando fechaFin según tipo */
+    /**
+     * Activa la membresía calculando fechaInicio = hoy
+     * y fechaFin = hoy + meses del tipo seleccionado
+     */
     public void activarSegunTipo() {
-        if (tipoMembresia == null) throw new IllegalStateException("Tipo no definido");
+        if (tipoMembresia == null)
+            throw new IllegalStateException("El tipo de membresía no está definido");
+
         LocalDate inicio = LocalDate.now();
         setFechaInicio(inicio);
         setFechaFin(inicio.plusMonths(tipoMembresia.getMeses()));

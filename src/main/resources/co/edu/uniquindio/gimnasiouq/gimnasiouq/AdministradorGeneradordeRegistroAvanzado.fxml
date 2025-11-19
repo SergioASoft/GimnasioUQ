@@ -1,49 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="486.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/25"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller.AdministradorGeneradordeRegistroAvanzadoViewController">
+<AnchorPane prefHeight="486.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller.AdministradorGeneradordeRegistroAvanzadoViewController">
     <children>
-        <Label fx:id="txtGeneradorReportesAvanzados"
-               layoutX="57.0" layoutY="-2.0" prefHeight="32.0"
-               prefWidth="248.0" text="Generador de reportes avanzados">
+        <Label fx:id="txtGeneradorReportesAvanzados" layoutX="57.0" layoutY="-2.0" prefHeight="32.0" prefWidth="248.0" text="Generador de reportes avanzados">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <Label fx:id="txtReporte"
-               layoutX="49.0" layoutY="50.0"
-               prefHeight="56.0" prefWidth="221.0"
-               text="Elija el reporte a realizar: ">
+        <Label fx:id="txtReporte" layoutX="49.0" layoutY="50.0" prefHeight="56.0" prefWidth="221.0" text="Elija el reporte a realizar: ">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <ComboBox fx:id="cmbReportes"
-                  layoutX="216.0" layoutY="66.0"
-                  prefHeight="26.0" prefWidth="290.0"
-                  promptText="Seleccionar" />
-        <Button fx:id="btnActualizar" layoutX="327.0"
-                layoutY="138.0" mnemonicParsing="false"
-                onAction="#OnActionActualizar" text="Actualizar" />
-        <TableView fx:id="tablaReportes"
-                   layoutX="10.0" layoutY="189.0"
-                   prefHeight="282.0" prefWidth="702.0">
+        <ComboBox fx:id="cmbReportes" layoutX="216.0" layoutY="66.0" prefHeight="26.0" prefWidth="290.0" promptText="Seleccionar" />
+        <Button fx:id="btnActualizar" layoutX="327.0" layoutY="138.0" mnemonicParsing="false" onAction="#OnActionActualizar" text="Actualizar" />
+        <TableView fx:id="tablaReportes" layoutX="10.0" layoutY="189.0" prefHeight="282.0" prefWidth="702.0">
             <columns>
-                <TableColumn fx:id="colNumReserva" text="N° Reserva" prefWidth="115" visible="true"/>
-                <TableColumn fx:id="colUsuario" text="Usuario" prefWidth="175" visible="true"/>
-                <TableColumn fx:id="colClase" text="Clase" prefWidth="175" visible="true"/>
-                <TableColumn fx:id="colFecha" text="Fecha" prefWidth="120" visible="false"/>
-                <TableColumn fx:id="colValor" text="Valor ($)" prefWidth="100" visible="false"/>
-                <TableColumn fx:id="colNombreClase" text="Nombre Clase" prefWidth="150" visible="false"/>
-                <TableColumn fx:id="colTipoClase" text="Tipo Clase" prefWidth="120" visible="false"/>
-                <TableColumn fx:id="colReservas" text="Reservas" prefWidth="100" visible="false"/>
+                <TableColumn fx:id="colNumReserva" prefWidth="127.20001029968262" text="N° Reserva" visible="true" />
+                <TableColumn fx:id="colUsuario" prefWidth="163.19995880126953" text="Usuario" visible="true" />
+                <TableColumn fx:id="colClase" prefWidth="175" text="Clase" visible="true" />
+                <TableColumn fx:id="colMembresia" prefWidth="120" text="Membresia" visible="false" />
+                <TableColumn fx:id="colValor" prefWidth="100" text="Valor ($)" visible="false" />
+                <TableColumn fx:id="colNombreClase" prefWidth="150" text="Nombre Clase" visible="false" />
+                <TableColumn fx:id="colTipoClase" prefWidth="120" text="Tipo Clase" visible="false" />
+                <TableColumn fx:id="colReservas" prefWidth="100" text="Reservas" visible="false" />
             </columns>
         </TableView>
-        <Separator layoutX="10.0" layoutY="176.0"
-                   prefHeight="0.0" prefWidth="710.0" />
+        <Separator layoutX="10.0" layoutY="176.0" prefHeight="0.0" prefWidth="710.0" />
     </children>
 </AnchorPane>

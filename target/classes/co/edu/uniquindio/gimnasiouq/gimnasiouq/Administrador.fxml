@@ -2,19 +2,30 @@
 
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
-<TabPane fx:id="tabPanePrincipal" xmlns:fx="http://javafx.com/fxml"
-         fx:controller="co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller.AdministradorViewController">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller.AdministradorViewController">
+    <top>
+        <HBox style="-fx-padding: 10; -fx-spacing: 10; -fx-alignment: CENTER_RIGHT;">
+            <Button fx:id="btnCerrarSesion" text="Cerrar Sesión" 
+                    onAction="#OnActionCerrarSesion"
+                    style="-fx-font-size: 12; -fx-padding: 8;"/>
+        </HBox>
+    </top>
+    <center>
+        <TabPane fx:id="tabPanePrincipal">
+            <tabs>
+                <Tab text="Gestión de entrenadores">
+                    <fx:include source="AdministradorGestionEntrenadores.fxml" />
+                </Tab>
 
-    <tabs>
-        <Tab text="Gestión de entrenadores">
-            <fx:include source="AdministradorGestionEntrenadores.fxml" />
-        </Tab>
-
-
-        <Tab text="Generación de reportes">
-            <fx:include source="AdministradorGeneradordeRegistroAvanzado.fxml" />
-        </Tab>
-    </tabs>
-
-</TabPane>
+                <Tab text="Generación de reportes">
+                    <fx:include source="AdministradorGeneradordeRegistroAvanzado.fxml" />
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>

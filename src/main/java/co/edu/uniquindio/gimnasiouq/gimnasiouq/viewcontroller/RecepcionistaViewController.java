@@ -36,7 +36,7 @@ public class RecepcionistaViewController {
     @FXML
     public void OnActionCerrarSesion(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/gimnasiouq/gimnasiouq/RecepcionistaLogin.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/gimnasiouq/gimnasiouq/AdministradorLogin.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) btnCerrarSesion.getScene().getWindow();
             stage.setScene(scene);

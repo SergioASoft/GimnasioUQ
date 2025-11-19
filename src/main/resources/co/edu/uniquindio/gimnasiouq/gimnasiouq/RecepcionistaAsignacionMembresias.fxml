@@ -45,13 +45,13 @@
                 <Label layoutX="49.0" layoutY="98.0" prefHeight="18.0" prefWidth="637.0" text="Label" />
       <TableView fx:id="tableMembresia" layoutY="256.0" prefHeight="343.0" prefWidth="852.0">
         <columns>
-          <TableColumn fx:id="tcId" prefWidth="118.39999544620514" text="Id" />
-          <TableColumn fx:id="tcNombre" minWidth="0.0" prefWidth="107.99999237060547" text="Nombre" />
-            <TableColumn fx:id="tcMembresia" minWidth="0.0" prefWidth="101.5999755859375" text="Membresia" />
-            <TableColumn fx:id="tcDuracion" minWidth="0.0" prefWidth="80.00006103515625" text="Duración" />
-            <TableColumn fx:id="tcFechaInicio" minWidth="0.0" prefWidth="119.20004272460938" text="Fecha de  Inicio" />
-            <TableColumn fx:id="tcFechaFinal" minWidth="0.0" prefWidth="142.4000244140625" text="Fecha final" />
-            <TableColumn fx:id="tcEstado" prefWidth="181.5999755859375" text="Estado" />
+          <TableColumn fx:id="tcId" prefWidth="107.19998323917389" text="Id" />
+          <TableColumn fx:id="tcNombre" minWidth="0.0" prefWidth="97.59993743896484" text="Nombre" />
+            <TableColumn fx:id="tcMembresia" minWidth="0.0" prefWidth="147.2000732421875" text="Membresia" />
+            <TableColumn fx:id="tcDuracion" minWidth="0.0" prefWidth="96.800048828125" text="Duración" />
+            <TableColumn fx:id="tcFechaInicio" minWidth="0.0" prefWidth="143.19998168945312" text="Fecha de  Inicio" />
+            <TableColumn fx:id="tcFechaFinal" minWidth="0.0" prefWidth="133.60003662109375" text="Fecha final" />
+            <TableColumn fx:id="tcEstado" prefWidth="132.7999267578125" text="Estado" />
         </columns>
       </TableView>
       <Button fx:id="btnCambiarEstado" layoutX="703.0" layoutY="211.0" mnemonicParsing="false" onAction="#OnActionCambiarEstado" text="Activar / Desactivar" />

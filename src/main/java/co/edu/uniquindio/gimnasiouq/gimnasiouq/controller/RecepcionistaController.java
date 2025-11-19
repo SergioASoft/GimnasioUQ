@@ -60,6 +60,10 @@ public class RecepcionistaController {
         return modelFactory.cambiarEstadoMembresiaPorUsuarioId(idUsuario);
     }
 
+    public Usuario buscarUsuarioPorId(String id) {
+        return modelFactory.buscarUsuarioPorId(id);
+    }
+
 
 
 }

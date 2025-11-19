@@ -86,9 +86,9 @@ public class GimnasioUQ {
 
     public boolean autenticar(String usuario, String contrasenia, String rol) {
         if ("Administrador".equals(rol)) {
-            return "123".equals(usuario) && "1234".equals(contrasenia);
+            return "123".equals(usuario) && "123".equals(contrasenia);
         } else if ("Recepcionista".equals(rol)) {
-            return "232454".equals(usuario) && "johangracioso".equals(contrasenia);
+            return "321".equals(usuario) && "321".equals(contrasenia);
         }
         return false;
     }
@@ -204,7 +204,7 @@ public class GimnasioUQ {
     public ArrayList<Usuario> getUsuariosActivos() {
         ArrayList<Usuario> activos = new ArrayList<>();
         for (Usuario u : listaUsuarios) {
-            if (u.isActivo()) activos.add(u);
+            if (u.isActivo()==true) activos.add(u);
         }
         return activos;
     }
@@ -226,7 +226,7 @@ public class GimnasioUQ {
         return porVencer;
     }
     public boolean registrarReservaClase(Usuario usuario, Clase clase) {
-        if (usuario == null || clase == null) return false;
+        if (usuario == null || clase == null || usuario.getMembresia().getEstado()==false) return false;
         String numReserva = "R" + (listaReservasClases.size() + 1);
         ReservaClase reserva = new ReservaClase(numReserva, usuario.getNombre(), clase.getNombre());
         listaReservasClases.add(reserva);
@@ -236,7 +236,11 @@ public class GimnasioUQ {
 
 
     public Clase buscarClasePorTipo(String tipoClase) {
-        for (Clase c : listaClases) if (c.getTipoClase().equals(tipoClase)) return c;
+        for (Clase c : listaClases) {
+            if (c.getTipoClase() != null && c.getTipoClase().name().equalsIgnoreCase(tipoClase)) {
+                return c;
+            }
+        }
         return null;
     }
 

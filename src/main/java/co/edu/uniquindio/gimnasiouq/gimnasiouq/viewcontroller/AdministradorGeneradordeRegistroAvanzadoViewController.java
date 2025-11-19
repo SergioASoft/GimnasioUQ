@@ -2,13 +2,13 @@ package co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller;
 
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.controller.AdministradorController;
 import co.edu.uniquindio.gimnasiouq.gimnasiouq.model.*;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import java.time.LocalDate;
 
 public class AdministradorGeneradordeRegistroAvanzadoViewController {
 
@@ -16,12 +16,12 @@ public class AdministradorGeneradordeRegistroAvanzadoViewController {
 
 
     @FXML private ComboBox<String> cmbReportes;
-    @FXML private TableView tablaReportes;
+    @FXML private TableView<?> tablaReportes;
 
     @FXML private TableColumn<ReservaClase, String> colNumReserva;
     @FXML private TableColumn<ReservaClase, String> colUsuario;
     @FXML private TableColumn<ReservaClase, String> colClase;
-    @FXML private TableColumn<Membresia, String> colFecha;
+    @FXML private TableColumn<Membresia, LocalDate> colMembresia;
     @FXML private TableColumn<Membresia, Double> colValor;
     @FXML private TableColumn<Clase, String> colNombreClase;
     @FXML private TableColumn<Clase, String> colTipoClase;
@@ -47,9 +47,9 @@ public class AdministradorGeneradordeRegistroAvanzadoViewController {
             colUsuario.setCellValueFactory(new PropertyValueFactory<>("usuario"));
         if (colClase != null)
             colClase.setCellValueFactory(new PropertyValueFactory<>("clase"));
-        if (colFecha != null)
-            colFecha.setCellValueFactory(cellData ->
-                    new SimpleStringProperty(cellData.getValue().getFechaInicio().toString())
+        if (colMembresia != null)
+            colMembresia.setCellValueFactory(cellData ->
+                    new SimpleObjectProperty<>(cellData.getValue().getFechaInicio())
             );
         if (colValor != null)
             colValor.setCellValueFactory(new PropertyValueFactory<>("costo"));
@@ -65,7 +65,7 @@ public class AdministradorGeneradordeRegistroAvanzadoViewController {
         if (colNumReserva != null) colNumReserva.setVisible(asistencia);
         if (colUsuario != null) colUsuario.setVisible(asistencia);
         if (colClase != null) colClase.setVisible(asistencia);
-        if (colFecha != null) colFecha.setVisible(membresias);
+        if (colMembresia != null) colMembresia.setVisible(membresias);
         if (colValor != null) colValor.setVisible(membresias);
         if (colNombreClase != null) colNombreClase.setVisible(populares);
         if (colTipoClase != null) colTipoClase.setVisible(populares);
@@ -77,15 +77,21 @@ public class AdministradorGeneradordeRegistroAvanzadoViewController {
 
         if ("Estadística de Asistencia".equals(seleccion)) {
             mostrarColumnas(true, false, false);
-            tablaReportes.setItems(FXCollections.observableArrayList(controller.getReporteAsistencias()));
+            @SuppressWarnings("unchecked")
+            TableView<ReservaClase> tabla1 = (TableView<ReservaClase>) tablaReportes;
+            tabla1.setItems(FXCollections.observableArrayList(controller.getReporteAsistencias()));
 
         } else if ("Ingresos por Membresías".equals(seleccion)) {
             mostrarColumnas(false, true, false);
-            tablaReportes.setItems(FXCollections.observableArrayList(controller.getReporteIngresosMembresias()));
+            @SuppressWarnings("unchecked")
+            TableView<Membresia> tabla2 = (TableView<Membresia>) tablaReportes;
+            tabla2.setItems(FXCollections.observableArrayList(controller.getReporteIngresosMembresias()));
 
         } else if ("Clases más populares".equals(seleccion)) {
             mostrarColumnas(false, false, true);
-            tablaReportes.setItems(FXCollections.observableArrayList(controller.getClasesMasPopulares()));
+            @SuppressWarnings("unchecked")
+            TableView<Clase> tabla3 = (TableView<Clase>) tablaReportes;
+            tabla3.setItems(FXCollections.observableArrayList(controller.getClasesMasPopulares()));
         }
     }
 
@@ -94,6 +100,5 @@ public class AdministradorGeneradordeRegistroAvanzadoViewController {
         actualizarTablaReporte();
     }
 }
-
 
 

@@ -14,6 +14,7 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="co.edu.uniquindio.gimnasiouq.gimnasiouq.viewcontroller.RecepcionistaReportesViewController">
     <children>
+
         <Label fx:id="txtTipoReporte"
                layoutX="93.0" layoutY="74.0"
                prefHeight="44.0" prefWidth="230.0"
@@ -22,27 +23,37 @@
                 <Font size="19.0" />
             </font>
         </Label>
-        <TableView fx:id="tablaReportes"
-                   layoutX="9.0" layoutY="227.0"
-                   prefHeight="304.0" prefWidth="813.0">
-            <columns>
-                <TableColumn fx:id="colDetalle" text="Detalle" prefWidth="813"/>
-            </columns>
-        </TableView>
+
+        <!-- ComboBox agregado correctamente -->
+        <ComboBox fx:id="cmbTipoReporte"
+                  layoutX="327.0" layoutY="83.0"
+                  prefWidth="200.0"
+                  promptText="Seleccionar" />
+
         <Button fx:id="btnGenerar"
                 layoutX="354.0" layoutY="170.0"
                 mnemonicParsing="false" text="Generar"
                 onAction="#OnActionGenerar" />
-        <ComboBox fx:id="cmbTipoReporte"
-                  layoutX="327.0" layoutY="83.0"
-                  prefWidth="150.0" promptText="Seleccionar" />
+
+        <TableView fx:id="tablaReportes"
+                   layoutX="9.0" layoutY="227.0"
+                   prefHeight="304.0" prefWidth="813.0">
+            <columns>
+                <TableColumn fx:id="colDetalle"
+                             text="Detalle"
+                             prefWidth="813" />
+            </columns>
+        </TableView>
+
         <Label layoutX="37.0" layoutY="3.0"
                text="Generación Reportes">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
+
         <Separator layoutX="-15.0" layoutY="212.0"
                    prefHeight="2.0" prefWidth="841.0" />
+
     </children>
 </AnchorPane>
